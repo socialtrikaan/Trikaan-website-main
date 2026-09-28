@@ -4,7 +4,7 @@ import path from "path";
 import { Resend } from "resend";
 
 // Contact submissions append to data/contacts.json (existing store). Emails sent via
-// Resend when RESEND_API_KEY is set; if unset, the form still stores + succeeds.
+// Resend; missing RESEND_API_KEY or a failed company notification returns 502.
 // ponytail: JSON store is the "DB" , swap for a real one if volume grows.
 export const runtime = "nodejs";
 
@@ -120,31 +120,56 @@ export async function POST(req: Request) {
     console.error("Contact store write skipped (read-only FS?):", e);
   }
 
-  // send emails (best-effort; store already succeeded so a mail failure won't lose the lead)
+  // Email is the real delivery path in production (read-only FS), so a failed
+  // company notification must not report success. resend.emails.send() does NOT
+  // throw on API errors , it returns { data, error }, so check error explicitly.
   const key = process.env.RESEND_API_KEY;
-  if (key) {
-    try {
-      const resend = new Resend(key);
-      const from = process.env.RESEND_FROM || "Trikaan <onboarding@resend.dev>";
-      const to = process.env.CONTACT_TO || email;
-      await Promise.all([
-        resend.emails.send({
-          from,
-          to,
-          replyTo: email,
-          subject: `New inquiry from ${name}`,
-          html: companyEmail(entry),
-        }),
-        resend.emails.send({
-          from,
-          to: email,
-          subject: "We got your inquiry , Trikaan",
-          html: userEmail(entry),
-        }),
-      ]);
-    } catch (e) {
-      console.error("Resend send failed:", e); // don't fail the request , inquiry is stored
-    }
+  const from = process.env.RESEND_FROM || "Trikaan <onboarding@resend.dev>";
+  const to = process.env.CONTACT_TO || email;
+  console.log("[contact] env", {
+    hasResendKey: Boolean(key), // never log the key itself
+    hasResendFrom: Boolean(process.env.RESEND_FROM),
+    hasContactTo: Boolean(process.env.CONTACT_TO),
+    from,
+    to,
+  });
+
+  const fail = () =>
+    NextResponse.json(
+      { error: "We couldn't send your message right now. Please try again or email us directly." },
+      { status: 502 },
+    );
+
+  if (!key) {
+    console.error("[contact] RESEND_API_KEY is not set , no email sent");
+    return fail();
+  }
+
+  try {
+    const resend = new Resend(key);
+    const [company, user] = await Promise.all([
+      resend.emails.send({
+        from,
+        to,
+        replyTo: email,
+        subject: `New inquiry from ${name}`,
+        html: companyEmail(entry),
+      }),
+      resend.emails.send({
+        from,
+        to: email,
+        subject: "We got your inquiry , Trikaan",
+        html: userEmail(entry),
+      }),
+    ]);
+    console.log("[contact] resend company", { id: company.data?.id, error: company.error });
+    console.log("[contact] resend confirmation", { id: user.data?.id, error: user.error });
+    // ponytail: only the company notification is fatal , a failed confirmation to the
+    // visitor (e.g. unverified sender domain) is logged but the lead still reached us.
+    if (company.error) return fail();
+  } catch (e) {
+    console.error("[contact] resend threw:", e instanceof Error ? e.message : e);
+    return fail();
   }
 
   return NextResponse.json({ ok: true }, { status: 201 });
