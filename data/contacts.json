@@ -1,0 +1,60 @@
+[
+  {
+    "id": 1769185036798,
+    "name": "Rohit",
+    "phone": "8310070049",
+    "email": "rohitkamalapurrr@gmail.com",
+    "message": "hi",
+    "date": "2026-01-23T16:17:16.798Z"
+  },
+  {
+    "id": 1784964239994,
+    "name": "vinod reddy",
+    "phone": "9998898899",
+    "email": "vinod@trikaan.com",
+    "message": "fffff",
+    "company": "vinod",
+    "role": "manger",
+    "interests": [
+      "Inventory Management",
+      "Production Planning",
+      "Quality Control"
+    ],
+    "preferredTime": "Afternoon (12 PM - 4 PM)",
+    "date": "2026-07-25T07:23:59.994Z"
+  },
+  {
+    "id": 1784964796982,
+    "name": "vinod",
+    "phone": "",
+    "email": "vinod@trikaan.com",
+    "message": "fff",
+    "interests": [
+      "Inventory Management",
+      "Shop-Floor Control"
+    ],
+    "preferredTime": "Morning (9 AM - 12 PM)",
+    "date": "2026-07-25T07:33:16.982Z"
+  },
+  {
+    "id": 1784965342740,
+    "name": "vinod",
+    "phone": "",
+    "email": "ddd@gmail.com",
+    "message": "fff",
+    "interests": [
+      "Inventory Management",
+      "Shop-Floor Control"
+    ],
+    "preferredTime": "Morning (9 AM - 12 PM)",
+    "date": "2026-07-25T07:42:22.740Z"
+  },
+  {
+    "id": 1784966652143,
+    "name": "vinod",
+    "phone": "",
+    "email": "vinod@trikaan.com",
+    "message": "ffff",
+    "date": "2026-07-25T08:04:12.143Z"
+  }
+]

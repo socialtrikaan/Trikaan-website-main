@@ -1,0 +1,285 @@
+@import "tailwindcss";
+
+/*
+  Trikaan design system , tokens extracted from Figma (file eQQH78ibEGpPSqmBaoMSpR).
+  Tailwind v4 CSS-first config. Every value below is an exact Figma value; names are
+  labels only. Do not invent new colors/spacing here , add only what Figma contains.
+*/
+
+@theme {
+  /* ---- Fonts ---- */
+  /* Inter for everything (all family tokens point to Inter per request). */
+  --font-inter-stack: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
+  --font-sans: var(--font-inter-stack);
+  --font-heading:
+    var(--font-segoe), "Segoe Print", var(--font-inter-stack); /* self-hosted Segoe Print */
+  --font-display: var(--font-inter-stack);
+  --font-serif: var(--font-inter-stack);
+  --font-geist: var(--font-inter-stack);
+  --font-mono: var(--font-geist-mono), monospace;
+
+  /* ---- Brand blues ---- */
+  --color-brand: #022da8; /* primary */
+  --color-brand-bright: #0048dd;
+  --color-brand-electric: #1b35e0;
+  --color-brand-navy: #1b3a5c;
+  --color-brand-slate: #344d6c;
+  --color-brand-ink: #000d2d;
+
+  /* ---- Ink / text ---- */
+  --color-ink: #0f1117; /* primary text */
+  --color-ink-900: #111827;
+  --color-ink-800: #272727;
+  --color-ink-700: #374151;
+  --color-ink-600: #4b5563;
+  --color-muted: #6b7280;
+  --color-muted-2: #686b72;
+  --color-muted-3: #666b75;
+  --color-muted-4: #6c757d;
+  --color-muted-5: #737880;
+  --color-muted-6: #929292;
+  --color-muted-7: #9ca3af;
+
+  /* ---- Surfaces / borders ---- */
+  --color-surface: #ffffff;
+  --color-surface-50: #f9fbfe;
+  --color-surface-100: #f9fafb;
+  --color-surface-150: #f8fafc;
+  --color-surface-200: #f8f9fa;
+  --color-surface-blue: #f4f8fb;
+  --color-surface-gray: #f3f4f6;
+  --color-surface-blue-2: #f0f4f8;
+  --color-tint-blue: #ebf1ff;
+  --color-tint-blue-2: #eaf2fc;
+  --color-border: #e5e7eb;
+  --color-border-2: #e5e8eb;
+  --color-border-3: #e2e8f0;
+
+  /* ---- Accents + tints ---- */
+  --color-success: #10b981;
+  --color-success-dark: #059669;
+  --color-purple: #8b5cf6;
+  --color-amber: #fbbf24;
+  --color-tint-teal: #ccfbf1;
+  --color-tint-green: #e6fbf3;
+  --color-tint-purple: #f3e8ff;
+  --color-tint-amber: #fef3c7;
+
+  /* ---- Radius (Figma exact) ---- */
+  --radius-button: 10px;
+  --radius-input: 12px;
+  --radius-card: 16px;
+  --radius-nav: 24px;
+  --radius-pill: 100px;
+
+  /* ---- Elevation (Figma exact) ---- */
+  --shadow-header: 3px 2px 15px rgba(0, 0, 0, 0.1);
+  --shadow-card: 0px 6px 18px rgba(0, 0, 0, 0.08);
+  --shadow-card-soft: 0px 6px 18px -6px rgba(0, 0, 0, 0.04);
+  --shadow-icon: 0px 1px 1px rgba(0, 0, 0, 0.05);
+  --shadow-milestone: 7px 31px 12px rgba(26, 38, 102, 0.12);
+  --shadow-brand: 0px 2px 6px rgba(2, 45, 168, 0.2);
+}
+
+/*
+  Spacing/font-size: Figma uses a 4px base that maps to Tailwind's default scale.
+  Non-multiple one-offs (5px, 9px, etc.) use arbitrary values in components ,
+  kept exact, not tokenized. ponytail: no custom spacing scale, default 4px base covers it.
+*/
+
+:root {
+  --background: #ffffff;
+  --foreground: #0f1117;
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: var(--font-sans);
+  overflow-x: hidden; /* kill stray horizontal scroll from full-bleed elements */
+}
+
+/* Hide scrollbars everywhere; scrolling stays fully functional. */
+html {
+  scrollbar-width: none; /* Firefox */
+  -ms-overflow-style: none; /* IE/old Edge */
+  overflow-x: hidden; /* stop any stray horizontal shift at the scroll container */
+  width: 100%;
+}
+
+/* Inputs: smooth focus glow (animates the existing focus ring/border in gently). */
+input,
+textarea,
+select {
+  transition:
+    box-shadow 0.2s ease,
+    border-color 0.2s ease;
+}
+
+/* Links: animated underline that grows left→right + colour transition. */
+.ul-anim {
+  background-image: linear-gradient(currentColor, currentColor);
+  background-size: 0% 1px;
+  background-position: 0 100%;
+  background-repeat: no-repeat;
+  transition:
+    background-size 0.3s ease,
+    color 0.2s ease;
+}
+.ul-anim:hover {
+  background-size: 100% 1px;
+}
+
+/* Lenis smooth scroll (functional, not visual , no layout/spacing change). */
+html.lenis,
+html.lenis body {
+  height: auto;
+}
+.lenis.lenis-smooth {
+  scroll-behavior: auto !important;
+}
+.lenis.lenis-smooth [data-lenis-prevent] {
+  overscroll-behavior: contain;
+}
+.lenis.lenis-stopped {
+  overflow: hidden;
+}
+* {
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+*::-webkit-scrollbar {
+  display: none; /* Chrome/Safari/Edge */
+  width: 0;
+  height: 0;
+}
+
+/* Hero particle-wave organic drift (Figma node 1:460 motion export). */
+@media (prefers-reduced-motion: no-preference) {
+  .hero-wave-float {
+    animation:
+      kf_1_460_translate_0 13s linear infinite,
+      kf_1_460_scale_0 13s linear infinite;
+    will-change: translate, scale;
+  }
+}
+@keyframes kf_1_460_translate_0 {
+  0% {
+    translate: 0px 0px;
+  }
+  5% {
+    translate: 1.852px -2.655px;
+  }
+  10% {
+    translate: 7.842px -7.716px;
+  }
+  11.538% {
+    translate: 9.467px -8px;
+  }
+  16.923% {
+    translate: 12px -2.688px;
+  }
+  20% {
+    translate: 10.859px 2.231px;
+  }
+  23.077% {
+    translate: 7.315px 4px;
+  }
+  27.692% {
+    translate: -0.315px 0.681px;
+  }
+  30% {
+    translate: -3.194px -2.681px;
+  }
+  33.846% {
+    translate: -5px -5.914px;
+  }
+  34.615% {
+    translate: -4.934px -6px;
+  }
+  40% {
+    translate: -0.471px -2.016px;
+  }
+  46.154% {
+    translate: 8.247px 3px;
+  }
+  50% {
+    translate: 10px 0.219px;
+  }
+  55.385% {
+    translate: 6.201px -8.02px;
+  }
+  57.692% {
+    translate: 2.403px -9px;
+  }
+  63.077% {
+    translate: -6.088px -2.802px;
+  }
+  66.923% {
+    translate: -8px 3.857px;
+  }
+  69.231% {
+    translate: -7.525px 5px;
+  }
+  75.385% {
+    translate: -1.524px -1.688px;
+  }
+  80.769% {
+    translate: 4.643px -7px;
+  }
+  84.615% {
+    translate: 6px -4.682px;
+  }
+  92.308% {
+    translate: 3px 3px;
+  }
+  100% {
+    translate: 0px 0px;
+  }
+}
+@keyframes kf_1_460_scale_0 {
+  0% {
+    scale: 1 1;
+  }
+  25% {
+    scale: 1.015 1.011;
+  }
+  39.231% {
+    scale: 1 1.02;
+  }
+  50% {
+    scale: 0.99 1.013;
+  }
+  62.308% {
+    scale: 1 0.991;
+  }
+  66.154% {
+    scale: 1.005 0.99;
+  }
+  78.462% {
+    scale: 1.01 1.01;
+  }
+  84.615% {
+    scale: 1.007 1.015;
+  }
+  100% {
+    scale: 1 1;
+  }
+}
+
+/* Segoe Print headings default to the bold face; override with font-normal where needed. */
+@layer base {
+  .font-heading {
+    font-weight: 700;
+  }
+}
+
+/* Nudge the Anvaya chat widget up a bit (clears the mobile bottom bar). Third-party
+   markup, so we target its container + common floating hooks. */
+#anvaya-support,
+#anvaya-support > *,
+#anvaya-support iframe,
+[id^="anvaya"][style*="fixed"],
+[class*="anvaya"][class*="widget"] {
+  bottom: 96px !important;
+}

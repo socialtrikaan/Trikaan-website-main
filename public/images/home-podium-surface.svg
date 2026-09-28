@@ -1,0 +1,9 @@
+<svg preserveAspectRatio="none" width="100%" height="100%" overflow="visible" style="display: block;" viewBox="0 0 180 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path id="podium-surface" d="M90 0.75C114.75 0.75 137.12 6.32446 153.275 15.2998C169.457 24.2893 179.25 36.5889 179.25 50C179.25 63.4111 169.457 75.7107 153.275 84.7002C137.12 93.6755 114.75 99.25 90 99.25C65.2502 99.25 42.8803 93.6755 26.7246 84.7002C10.5435 75.7107 0.75 63.4111 0.75 50C0.75 36.5889 10.5435 24.2893 26.7246 15.2998C42.8803 6.32446 65.2502 0.75 90 0.75Z" fill="url(#paint0_linear_0_15)" stroke="var(--stroke-0, white)" stroke-width="1.5"/>
+<defs>
+<linearGradient id="paint0_linear_0_15" x1="90" y1="0" x2="90" y2="100" gradientUnits="userSpaceOnUse">
+<stop stop-color="#B1C8FF" stop-opacity="0.333333"/>
+<stop offset="1" stop-color="#E6EEFF" stop-opacity="0.133333"/>
+</linearGradient>
+</defs>
+</svg>

@@ -1,0 +1,16 @@
+<svg preserveAspectRatio="none" width="100%" height="100%" overflow="visible" style="display: block;" viewBox="0 0 248 168" fill="none" xmlns="http://www.w3.org/2000/svg">
+<g id="podium-3d-base" filter="url(#filter0_f_0_50)">
+<ellipse cx="124" cy="84" rx="100" ry="60" fill="url(#paint0_linear_0_50)"/>
+</g>
+<defs>
+<filter id="filter0_f_0_50" x="0" y="0" width="248" height="168" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+<feFlood flood-opacity="0" result="BackgroundImageFix"/>
+<feBlend mode="normal" in="SourceGraphic" in2="BackgroundImageFix" result="shape"/>
+<feGaussianBlur stdDeviation="12" result="effect1_foregroundBlur_0_50"/>
+</filter>
+<linearGradient id="paint0_linear_0_50" x1="124" y1="24" x2="124" y2="144" gradientUnits="userSpaceOnUse">
+<stop stop-color="#0342FD" stop-opacity="0.2"/>
+<stop offset="1" stop-color="#0342FD" stop-opacity="0.0509804"/>
+</linearGradient>
+</defs>
+</svg>
