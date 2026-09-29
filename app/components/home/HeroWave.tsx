@@ -23,14 +23,18 @@ export default function HeroWave() {
     camera.position.set(0, 2.6, 8.5);
     camera.lookAt(0, 1.1, -5);
 
-    const renderer = new THREE.WebGLRenderer({ alpha: true, antialias: true });
-    renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+    // phones: the per-frame JS loop below hogs the main thread and blocks touch
+    // scrolling right after load → ~half the dots (same area), lower DPR, no MSAA.
+    const mobile = window.matchMedia("(pointer: coarse)").matches;
+    const renderer = new THREE.WebGLRenderer({ alpha: true, antialias: !mobile });
+    renderer.setPixelRatio(Math.min(window.devicePixelRatio, mobile ? 1.5 : 2));
     renderer.setSize(w, h);
     mount.appendChild(renderer.domElement);
 
-    const COLS = 200;
-    const ROWS = 120;
-    const GAP = 0.3;
+    const DENSITY = mobile ? 0.7 : 1; // per axis → 0.49× the points on mobile
+    const COLS = Math.round(200 * DENSITY);
+    const ROWS = Math.round(120 * DENSITY);
+    const GAP = 0.3 / DENSITY;
     const count = COLS * ROWS;
     const positions = new Float32Array(count * 3);
     const colors = new Float32Array(count * 3);
@@ -176,14 +180,31 @@ export default function HeroWave() {
 
     let raf = 0;
     const clock = new THREE.Clock();
+    let visible = true; // stop the loop entirely once the hero scrolls out of view
     const render = () => {
+      if (!visible) return;
       const t = clock.getElapsedTime() * 0.9 + scrollPhase;
       wave(t);
       points.rotation.y = Math.sin(t * 0.04) * 0.05;
       renderer.render(scene, camera);
       raf = requestAnimationFrame(render);
     };
-    render(); // always animate , hero wave is explicitly wanted regardless of prefers-reduced-motion
+    // always animate , hero wave is explicitly wanted regardless of prefers-reduced-motion.
+    // Start once the browser is idle so first-load hydration + touch scroll get the main thread.
+    const io = new IntersectionObserver(([e]) => {
+      const was = visible;
+      visible = e.isIntersecting;
+      if (visible && !was) {
+        cancelAnimationFrame(raf); // a frame may still be queued → never run two loops
+        raf = requestAnimationFrame(render);
+      }
+    });
+    const ric = window.requestIdleCallback ?? ((cb: () => void) => window.setTimeout(cb, 200));
+    const cic = window.cancelIdleCallback ?? window.clearTimeout;
+    const idle = ric(() => {
+      render();
+      io.observe(mount);
+    });
 
     const onResize = () => {
       w = mount.clientWidth;
@@ -196,6 +217,8 @@ export default function HeroWave() {
 
     return () => {
       cancelAnimationFrame(raf);
+      cic(idle);
+      io.disconnect();
       window.removeEventListener("pointermove", onMove);
       window.removeEventListener("scroll", onScroll);
       window.removeEventListener("resize", onResize);

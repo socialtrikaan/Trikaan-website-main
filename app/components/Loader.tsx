@@ -15,7 +15,7 @@ export default function Loader({ visible }: LoaderProps) {
           key="loader"
           aria-hidden={!visible}
           role="status"
-          className="fixed inset-0 z-[200] flex items-center justify-center bg-white"
+          className="pointer-events-none fixed inset-0 z-[200] flex items-center justify-center bg-white"
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           exit={{ opacity: 0 }}

@@ -14,6 +14,7 @@ export default function Template({ children }: { children: React.ReactNode }) {
   return (
     <motion.div
       ref={ref}
+      className="page-tx"
       variants={pageTransition}
       initial="hidden"
       animate="show"

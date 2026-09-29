@@ -1,5 +1,6 @@
 "use client";
 
+import { useEffect, useState } from "react";
 import { motion } from "framer-motion";
 
 // One site-wide ambient background. Fixed, pointer-events-none, sits behind all content
@@ -31,6 +32,14 @@ const NOISE =
   "url(\"data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E\")";
 
 export default function GlobalBackground() {
+  // Phones: keep the background static. 15 never-ending JS-driven loops on a fixed full-screen
+  // layer kept the main thread busy on every page → touch scroll lagged right after load.
+  // Starts static (SSR + first paint), desktop switches the drift on after mount.
+  const [live, setLive] = useState(false);
+  useEffect(() => {
+    if (!window.matchMedia("(pointer: coarse)").matches) setLive(true);
+  }, []);
+
   return (
     <div
       aria-hidden
@@ -43,7 +52,7 @@ export default function GlobalBackground() {
           backgroundImage:
             "radial-gradient(120% 80% at 50% -10%, rgba(3,66,253,0.06), transparent 60%)",
         }}
-        animate={{ opacity: [0.7, 1, 0.7] }}
+        animate={live && { opacity: [0.7, 1, 0.7] }}
         transition={{ duration: 14, ease: "easeInOut", repeat: Infinity }}
       />
 
@@ -66,12 +75,12 @@ export default function GlobalBackground() {
           and just composited , keeps scrolling smooth. */}
       <motion.div
         className="absolute -left-[10%] top-[8%] h-[60vh] w-[60vh] rounded-full bg-brand/[0.05] blur-[110px] will-change-transform"
-        animate={{ x: [0, 60, 0], y: [0, 40, 0] }}
+        animate={live && { x: [0, 60, 0], y: [0, 40, 0] }}
         transition={{ duration: 48, ease: "easeInOut", repeat: Infinity }}
       />
       <motion.div
         className="absolute -right-[8%] bottom-[8%] h-[55vh] w-[55vh] rounded-full bg-[#7DB8FF]/[0.05] blur-[120px] will-change-transform"
-        animate={{ x: [0, -50, 0], y: [0, -30, 0] }}
+        animate={live && { x: [0, -50, 0], y: [0, -30, 0] }}
         transition={{ duration: 60, ease: "easeInOut", repeat: Infinity }}
       />
 
@@ -81,7 +90,7 @@ export default function GlobalBackground() {
           key={`d${i}`}
           className="absolute rounded-full bg-brand/20"
           style={{ left: p.l, top: p.t, width: p.s, height: p.s }}
-          animate={{ y: [0, -30, 0], x: [0, 12, 0] }}
+          animate={live && { y: [0, -30, 0], x: [0, 12, 0] }}
           transition={{
             duration: p.d,
             delay: p.dl,
@@ -92,12 +101,12 @@ export default function GlobalBackground() {
       ))}
 
       {/* occasional glowing particles */}
-      {GLOW.map((p, i) => (
+      {live && GLOW.map((p, i) => (
         <motion.span
           key={`g${i}`}
           className="absolute rounded-full bg-brand/30 blur-[2px]"
           style={{ left: p.l, top: p.t, width: p.s, height: p.s }}
-          animate={{ opacity: [0, 0.7, 0], scale: [0.6, 1.4, 0.6] }}
+          animate={live && { opacity: [0, 0.7, 0], scale: [0.6, 1.4, 0.6] }}
           transition={{
             duration: p.d,
             delay: p.dl,
