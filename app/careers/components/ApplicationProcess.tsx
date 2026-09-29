@@ -10,7 +10,7 @@ import SectionHeader from "./SectionHeader";
 // after each card's number badge, one step after another.
 const lineV: Variants = {
   hidden: { scaleX: 0 },
-  show: { scaleX: 1, transition: { duration: 0.5, ease: EASE_OUT, delay: 0.2 } },
+  show: { scaleX: 1, transition: { duration: 0.33, ease: EASE_OUT, delay: 0.13 } },
 };
 
 const STEPS = [

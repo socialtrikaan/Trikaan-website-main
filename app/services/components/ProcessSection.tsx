@@ -98,8 +98,8 @@ function Segment({
   progress: MotionValue<number>;
 }) {
   const drawn = useSpring(useTransform(progress, [seg.range[0], seg.range[1]], [0, 1]), {
-    stiffness: 80,
-    damping: 26,
+    stiffness: 300,
+    damping: 40,
     mass: 0.5,
   });
   const dotOpacity = useTransform(drawn, [0, 0.04, 0.96, 1], [0, 1, 1, 0]);
@@ -152,22 +152,22 @@ function Segment({
   );
 }
 
-const group: Variants = { hidden: {}, show: { transition: { staggerChildren: 0.12 } } };
+const group: Variants = { hidden: {}, show: { transition: { staggerChildren: 0.08 } } };
 const numV: Variants = {
   hidden: { opacity: 0, scale: 0.6 },
   show: { opacity: 1, scale: 1, transition: { type: "spring", stiffness: 200, damping: 16 } },
 };
 const titleV: Variants = {
   hidden: { opacity: 0, y: 20 },
-  show: { opacity: 1, y: 0, transition: { duration: 0.5, ease: EASE_OUT } },
+  show: { opacity: 1, y: 0, transition: { duration: 0.33, ease: EASE_OUT } },
 };
 const descV: Variants = {
   hidden: { opacity: 0 },
-  show: { opacity: 1, transition: { duration: 0.6, delay: 0.1 } },
+  show: { opacity: 1, transition: { duration: 0.39, delay: 0.07 } },
 };
 const badgeV: Variants = {
   hidden: { opacity: 0, scale: 0.7 },
-  show: { opacity: 1, scale: 1, transition: { type: "spring", stiffness: 260, damping: 18, delay: 0.15 } },
+  show: { opacity: 1, scale: 1, transition: { type: "spring", stiffness: 260, damping: 18, delay: 0.1 } },
 };
 
 const reveal = { initial: "hidden", whileInView: "show", viewport: { once: true, amount: 0.6 } } as const;

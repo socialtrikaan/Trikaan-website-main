@@ -352,7 +352,7 @@ export default function ProblemSolution() {
                         }}
                         viewport={viewport}
                         transition={{
-                          duration: 0.9,
+                          duration: 0.59,
                           ease: "easeOut",
                           delay: dl,
                         }}

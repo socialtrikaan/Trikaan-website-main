@@ -31,16 +31,16 @@ export default function Hero() {
     { stiffness: 80, damping: 20 },
   );
   const headlineY = useSpring(useTransform(scrollYProgress, [0, 1], [0, -70]), {
-    stiffness: 80,
-    damping: 20,
+    stiffness: 300,
+    damping: 40,
   });
   const waveY = useSpring(useTransform(scrollYProgress, [0, 1], [0, 70]), {
-    stiffness: 80,
-    damping: 20,
+    stiffness: 300,
+    damping: 40,
   });
   const waveScale = useSpring(useTransform(scrollYProgress, [0, 1], [1, 0.9]), {
-    stiffness: 80,
-    damping: 20,
+    stiffness: 300,
+    damping: 40,
   });
 
   // mouse-parallax depth: content drifts a little, mountain drifts more (further layer)
@@ -83,14 +83,14 @@ export default function Hero() {
             style={{ y: headlineY }}
             initial={{ opacity: 0, scale: 0.96 }}
             animate={{ opacity: 1, scale: 1 }}
-            transition={{ duration: 0.8, ease: EASE_OUT, delay: 0.6 }}
+            transition={{ duration: 0.52, ease: EASE_OUT, delay: 0.39 }}
           >
             We{" "}
             <motion.span
               className="inline-block font-heading font-bold text-brand"
               initial={{ opacity: 0, y: "0.25em" }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.55, ease: EASE_OUT, delay: 1.25 }}
+              transition={{ duration: 0.36, ease: EASE_OUT, delay: 0.81 }}
             >
               See Solutions
             </motion.span>{" "}
@@ -100,7 +100,7 @@ export default function Hero() {
               className="inline-block font-heading font-bold text-brand"
               initial={{ opacity: 0, y: "0.25em" }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.55, ease: EASE_OUT, delay: 1.45 }}
+              transition={{ duration: 0.36, ease: EASE_OUT, delay: 0.94 }}
             >
               See Complexity
             </motion.span>
@@ -109,9 +109,9 @@ export default function Hero() {
           {/* subtitle , fade with blur reduction */}
           <motion.div
             className="mt-[28px] flex max-w-[1100px] flex-col gap-3"
-            initial={{ opacity: 0, filter: "blur(8px)" }}
-            animate={{ opacity: 1, filter: "blur(0px)" }}
-            transition={{ duration: 0.7, ease: EASE_OUT, delay: 1.65 }}
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ duration: 0.45, ease: EASE_OUT, delay: 1.07 }}
           >
             <p className="text-[18px] leading-[1.7] text-muted">
               Most software forces businesses to change the way they work.{" "}
@@ -135,7 +135,7 @@ export default function Hero() {
               type: "spring",
               stiffness: 260,
               damping: 18,
-              delay: 1.9,
+              delay: 1.23,
             }}
           >
             <motion.div whileHover={hoverButton} whileTap={tapButton}>
@@ -166,7 +166,7 @@ export default function Hero() {
         style={{ x: wavePX, y: wavePY }}
         initial={{ opacity: 0, scale: 0.92 }}
         animate={{ opacity: 1, scale: 1 }}
-        transition={{ duration: 1.6, ease: EASE_OUT, delay: 0.3 }}
+        transition={{ duration: 1.04, ease: EASE_OUT, delay: 0.2 }}
       >
         <motion.div
           className="h-full w-full"

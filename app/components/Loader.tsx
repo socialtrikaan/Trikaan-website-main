@@ -19,14 +19,14 @@ export default function Loader({ visible }: LoaderProps) {
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           exit={{ opacity: 0 }}
-          transition={{ duration: 0.3 }}
+          transition={{ duration: 0.2 }}
         >
           {/* Trikaan logo only , soft reveal + gentle breathing */}
           <motion.div
             initial={{ opacity: 0, scale: 0.92 }}
             animate={{ opacity: [0, 1, 1], scale: [0.92, 1, 1.03, 1] }}
             transition={{
-              opacity: { duration: 0.5 },
+              opacity: { duration: 0.3 },
               scale: { duration: 2.2, ease: "easeInOut", repeat: Infinity },
             }}
           >

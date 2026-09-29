@@ -109,7 +109,7 @@ export default function Button({
           style={{ left: r.x, top: r.y, width: r.size, height: r.size, x: "-50%", y: "-50%" }}
           initial={{ scale: 0, opacity: 0.4 }}
           animate={{ scale: 1, opacity: 0 }}
-          transition={{ duration: 0.6, ease: "easeOut" }}
+          transition={{ duration: 0.39, ease: "easeOut" }}
         />
       ))}
       {loading && <Loader2 className="size-4 animate-spin" aria-hidden />}

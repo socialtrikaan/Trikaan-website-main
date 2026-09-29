@@ -13,7 +13,7 @@ const wordV: Variants = {
   show: (delay: number) => ({
     opacity: 1,
     y: 0,
-    transition: { duration: 0.5, ease: [0.22, 1, 0.36, 1], delay },
+    transition: { duration: 0.33, ease: [0.22, 1, 0.36, 1], delay },
   }),
 };
 

@@ -27,7 +27,7 @@ export default function Rings() {
           strokeLinecap="round"
           initial={{ pathLength: 0, opacity: 0 }}
           animate={{ pathLength: 1, opacity: 1 }}
-          transition={{ duration: 1.2, ease: "easeInOut", delay: 0.1 + i * 0.12 }}
+          transition={{ duration: 0.78, ease: "easeInOut", delay: 0.1 + i * 0.12 }}
         />
       ))}
     </svg>

@@ -14,12 +14,11 @@ const container: Variants = {
 };
 
 const wordVariant: Variants = {
-  hidden: { opacity: 0, y: "0.45em", filter: "blur(6px)" },
+  hidden: { opacity: 0, y: "0.45em" },
   show: {
     opacity: 1,
     y: 0,
-    filter: "blur(0px)",
-    transition: { type: "spring", duration: 0.6, bounce: 0.15 },
+    transition: { type: "spring", duration: 0.39, bounce: 0.15 },
   },
 };
 

@@ -129,7 +129,7 @@ export default function TrikaanWay() {
             className="flex w-full flex-col rounded-[24px] border-2 border-brand bg-white p-8 shadow-[0_30px_70px_-30px_rgba(3,66,253,0.4)] lg:hidden"
             initial={{ opacity: 0, y: 18 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.4, ease: [0.22, 1, 0.36, 1] }}
+            transition={{ duration: 0.26, ease: [0.22, 1, 0.36, 1] }}
           >
             <p className="text-right font-heading text-[64px] leading-none text-brand">
               {CARDS[active].n}

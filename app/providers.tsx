@@ -22,7 +22,7 @@ export default function Providers({
       if (!cancelled) {
         setLoading(false);
       }
-    }, 500);
+    }, 250);
 
     return () => {
       cancelled = true;

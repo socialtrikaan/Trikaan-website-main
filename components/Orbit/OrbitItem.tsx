@@ -49,7 +49,7 @@ function OrbitItem({ label, Icon, color, angle, order, counter, play, isActive, 
         <motion.div
           initial={{ opacity: 0, scale: 0.4 }}
           animate={play ? { opacity: 1, scale: 1 } : undefined}
-          transition={{ delay: 0.8 + order * 0.25, duration: 0.45, ease: [0.22, 1, 0.36, 1] }}
+          transition={{ delay: 0.5 + order * 0.16, duration: 0.29, ease: [0.22, 1, 0.36, 1] }}
         >
           {/* magnetic pull (x/y) + selected enlarge (scale) */}
           <motion.div

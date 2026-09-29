@@ -74,7 +74,7 @@ export default function Footer() {
         initial={{ opacity: 0, scale: 1.2 }}
         whileInView={{ opacity: 1, scale: 1 }}
         viewport={{ once: true, amount: 0.4 }}
-        transition={{ duration: 1.6, ease: [0.22, 1, 0.36, 1] }}
+        transition={{ duration: 1.04, ease: [0.22, 1, 0.36, 1] }}
       >
         <Image
           src="/images/footer-brand.png"
@@ -110,7 +110,7 @@ export default function Footer() {
               variants={{
                 hidden: {},
                 show: {
-                  transition: { staggerChildren: 0.09, delayChildren: 0.35 },
+                  transition: { staggerChildren: 0.06, delayChildren: 0.23 },
                 },
               }}
             >

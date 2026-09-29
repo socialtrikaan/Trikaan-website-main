@@ -45,7 +45,7 @@ export default function PlatformOrbit() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, amount: 0.5 }}
             transition={{
-              duration: 0.6,
+              duration: 0.39,
               ease: [0.22, 1, 0.36, 1],
               delay: i * 0.12,
             }}
@@ -76,7 +76,7 @@ export default function PlatformOrbit() {
           initial={{ opacity: 0, y: 24 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, amount: 0.3 }}
-          transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
+          transition={{ duration: 0.39, ease: [0.22, 1, 0.36, 1] }}
         >
           <div className="flex flex-col gap-2">
             <h3 className="text-[36px] font-extrabold leading-[1.1] text-ink md:text-[44px]">
@@ -141,7 +141,7 @@ export default function PlatformOrbit() {
           initial={{ opacity: 0, scale: 0.92 }}
           whileInView={{ opacity: 1, scale: 1 }}
           viewport={{ once: true, amount: 0.3 }}
-          transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
+          transition={{ duration: 0.45, ease: [0.22, 1, 0.36, 1] }}
         >
           <Orbit />
         </motion.div>

@@ -265,7 +265,7 @@ export default function OrbitDiagram() {
             aria-hidden
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
-            transition={{ duration: 0.6, delay: 0.2 }}
+            transition={{ duration: 0.39, delay: 0.13 }}
           >
             {NODES.map(({ label, left, top }) => {
               const cx = left + 36;

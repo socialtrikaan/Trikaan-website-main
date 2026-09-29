@@ -8,19 +8,19 @@ import { hoverButton, tapButton } from "@/lib/animations";
 // fields reveal one after another (the whole section's rise is handled by the page wrapper)
 const formV: Variants = {
   hidden: {},
-  show: { transition: { staggerChildren: 0.08, delayChildren: 0.15 } },
+  show: { transition: { staggerChildren: 0.05, delayChildren: 0.1 } },
 };
 const itemV: Variants = {
   hidden: { opacity: 0, y: 20 },
   show: {
     opacity: 1,
     y: 0,
-    transition: { duration: 0.5, ease: [0.22, 1, 0.36, 1] },
+    transition: { duration: 0.33, ease: [0.22, 1, 0.36, 1] },
   },
 };
 const gridV: Variants = {
   hidden: {},
-  show: { transition: { staggerChildren: 0.08 } },
+  show: { transition: { staggerChildren: 0.05 } },
 };
 
 const fieldLabel = "text-[12px] font-bold uppercase text-ink";
@@ -329,7 +329,7 @@ export default function InquiryForm() {
                   type: "spring",
                   stiffness: 400,
                   damping: 18,
-                  delay: 0.1,
+                  delay: 0.07,
                 }}
               >
                 <CheckCircle2 size={36} strokeWidth={2.2} />

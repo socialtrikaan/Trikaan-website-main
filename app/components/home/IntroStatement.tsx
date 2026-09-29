@@ -32,8 +32,8 @@ export default function IntroStatement() {
   });
   // section drifts slower than the page → depth
   const y = useSpring(useTransform(scrollYProgress, [0, 1], [50, -50]), {
-    stiffness: 80,
-    damping: 20,
+    stiffness: 300,
+    damping: 40,
   });
 
   const enter = { once: true, amount: 0 } as const; // trigger as it enters (Hero still leaving)
@@ -73,7 +73,7 @@ export default function IntroStatement() {
               initial={{ clipPath: "inset(0% 0% 100% 0%)" }}
               whileInView={{ clipPath: "inset(0% 0% 0% 0%)" }}
               viewport={enter}
-              transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
+              transition={{ duration: 0.52, ease: [0.22, 1, 0.36, 1] }}
             >
               We build systems that grow with the way your business evolves.
             </motion.p>

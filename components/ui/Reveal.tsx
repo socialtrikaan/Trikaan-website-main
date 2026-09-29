@@ -22,7 +22,7 @@ export default function Reveal({
       initial={{ opacity: 0, y, scale: 0.98 }}
       whileInView={{ opacity: 1, y: 0, scale: 1 }}
       viewport={{ once: true, margin: "-80px" }}
-      transition={{ type: "spring", duration: 0.8, bounce: 0.15, delay }}
+      transition={{ type: "spring", duration: 0.52, bounce: 0.15, delay }}
     >
       {children}
     </motion.div>

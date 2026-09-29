@@ -26,7 +26,7 @@ export default function SmoothScroll() {
     if (window.matchMedia("(pointer: coarse)").matches) return;
 
     const lenis = new Lenis({
-      duration: 1.1,
+      duration: 0.8,
       // easeOutExpo , long, weighted glide (Apple/Stripe feel)
       easing: (t) => (t === 1 ? 1 : 1 - Math.pow(2, -10 * t)),
       smoothWheel: true,

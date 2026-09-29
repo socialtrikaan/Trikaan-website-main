@@ -122,7 +122,7 @@ function Milestone({ m }: { m: M }) {
       style={{ left: m.left, top: m.top }}
       initial={{ opacity: 0, y: 12, scale: 0.94 }}
       animate={{ opacity: 1, y: 0, scale: 1 }}
-      transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
+      transition={{ duration: 0.33, ease: [0.22, 1, 0.36, 1] }}
     >
       {m.year === "2026" ? (
         <Card2026 />
@@ -202,7 +202,7 @@ export default function JourneySection() {
                 style={{ left: l.left, top: l.top, width: 76 }}
                 initial={{ scaleX: 0, opacity: 0 }}
                 animate={{ scaleX: 1, opacity: 1 }}
-                transition={{ duration: 0.4, ease: [0.22, 1, 0.36, 1] }}
+                transition={{ duration: 0.26, ease: [0.22, 1, 0.36, 1] }}
               />
             ) : null,
           )}
@@ -234,7 +234,7 @@ export default function JourneySection() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, amount: 0.5 }}
               transition={{
-                duration: 0.5,
+                duration: 0.33,
                 ease: [0.22, 1, 0.36, 1],
                 delay: i * 0.18,
               }}

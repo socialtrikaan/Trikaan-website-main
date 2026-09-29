@@ -88,7 +88,7 @@ function ConnPath({ seg, idx }: { seg: Seg; idx: number }) {
         initial={{ pathLength: 0 }}
         whileInView={{ pathLength: 1 }}
         viewport={viewport}
-        transition={{ duration: 1, ease: EASE_OUT, delay }}
+        transition={{ duration: 0.65, ease: EASE_OUT, delay }}
       />
       {[seg.a, seg.b].map(([x, y], k) => (
         <motion.g
@@ -97,7 +97,7 @@ function ConnPath({ seg, idx }: { seg: Seg; idx: number }) {
           whileInView={{ opacity: 1, scale: 1 }}
           viewport={viewport}
           transition={{
-            duration: 0.4,
+            duration: 0.26,
             ease: EASE_OUT,
             delay: delay + 0.35 + k * 0.1,
           }}
@@ -127,11 +127,11 @@ function ConnPath({ seg, idx }: { seg: Seg; idx: number }) {
 
 const textGroup: Variants = {
   hidden: {},
-  show: { transition: { staggerChildren: 0.12, delayChildren: 0.25 } },
+  show: { transition: { staggerChildren: 0.08, delayChildren: 0.16 } },
 };
 const textItem: Variants = {
   hidden: { opacity: 0, y: 20 },
-  show: { opacity: 1, y: 0, transition: { duration: 0.5, ease: EASE_OUT } },
+  show: { opacity: 1, y: 0, transition: { duration: 0.33, ease: EASE_OUT } },
 };
 
 function StepCard({
@@ -165,10 +165,10 @@ function StepCard({
       <motion.div
         className="absolute inset-1.5 overflow-hidden rounded-[12px]"
         style={{ x: imgX, y: imgY }}
-        initial={{ scale: 1.08, filter: "blur(14px)" }}
-        whileInView={{ scale: 1, filter: "blur(0px)" }}
+        initial={{ scale: 1.08 }}
+        whileInView={{ scale: 1 }}
         viewport={viewport}
-        transition={{ duration: 0.9, ease: EASE_OUT }}
+        transition={{ duration: 0.59, ease: EASE_OUT }}
       >
         <ParallaxImage
           src={s.photo}
@@ -187,7 +187,7 @@ function StepCard({
         initial={{ scaleX: 1 }}
         whileInView={{ scaleX: 0 }}
         viewport={viewport}
-        transition={{ duration: 0.8, ease: [0.7, 0, 0.2, 1], delay: 0.1 }}
+        transition={{ duration: 0.52, ease: [0.7, 0, 0.2, 1], delay: 0.07 }}
       />
     </div>
   );
@@ -230,7 +230,7 @@ function StepCard({
         initial={{ opacity: 0 }}
         whileInView={{ opacity: 1 }}
         viewport={viewport}
-        transition={{ duration: 0.9, ease: EASE_OUT, delay: 0.2 }}
+        transition={{ duration: 0.59, ease: EASE_OUT, delay: 0.13 }}
       />
       <motion.div
         onMouseMove={onMove}
@@ -255,7 +255,7 @@ function StepCard({
           boxShadow: "0px 32px 64px -12px rgba(3,66,253,0.28)",
         }}
         viewport={viewport}
-        transition={{ duration: 0.7, ease: EASE_OUT }}
+        transition={{ duration: 0.45, ease: EASE_OUT }}
       >
         {photo}
         {text}

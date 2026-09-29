@@ -37,7 +37,7 @@ export default function ExpandReveal({
     // spring bounce in place, then open the reveal
     bounce.start({
       scale: [1, 0.82, 1.18, 0.94, 1],
-      transition: { duration: 0.5, ease: "easeOut" },
+      transition: { duration: 0.33, ease: "easeOut" },
     });
     openReveal();
   }
@@ -99,7 +99,7 @@ export default function ExpandReveal({
             <motion.div
               className="absolute inset-0 backdrop-blur-md"
               variants={{ hidden: { opacity: 0 }, show: { opacity: 1 } }}
-              transition={{ duration: 0.4 }}
+              transition={{ duration: 0.26 }}
             />
             {/* expanding circle */}
             <motion.div
@@ -134,7 +134,7 @@ export default function ExpandReveal({
                 hidden: { opacity: 0, y: 24 },
                 show: { opacity: 1, y: 0 },
               }}
-              transition={{ duration: 0.5, ease: EASE_OUT, delay: 0.35 }}
+              transition={{ duration: 0.33, ease: EASE_OUT, delay: 0.23 }}
             >
               <button
                 type="button"

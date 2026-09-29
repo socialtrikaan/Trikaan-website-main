@@ -8,14 +8,14 @@ export const EASE_IN_OUT: Transition["ease"] = [0.65, 0, 0.35, 1];
 export const EASE_SPRING: Transition["ease"] = [0.34, 1.56, 0.64, 1]; // gentle overshoot
 
 // Tunable constants , one source of truth for timing/distance/spring across the site.
-export const DURATION = { fast: 0.35, base: 0.6, slow: 0.9 } as const;
+export const DURATION = { fast: 0.25, base: 0.4, slow: 0.6 } as const;
 export const DISTANCE = { sm: 16, md: 40, lg: 80 } as const;
 export const SPRING = {
-  soft: { stiffness: 80, damping: 20, restDelta: 0.001 },
+  soft: { stiffness: 300, damping: 40, restDelta: 0.001 },
   snappy: { stiffness: 220, damping: 28, restDelta: 0.001 },
 } as const;
 
-const base = (from: Record<string, number>, duration = 0.7): Variants => ({
+const base = (from: Record<string, number>, duration = 0.45): Variants => ({
   hidden: { opacity: 0, ...from },
   show: {
     opacity: 1,
@@ -26,13 +26,13 @@ const base = (from: Record<string, number>, duration = 0.7): Variants => ({
   },
 });
 
-export const fadeIn: Variants = base({}, 0.6);
+export const fadeIn: Variants = base({}, 0.4);
 export const fadeUp: Variants = base({ y: 40 });
 export const fadeDown: Variants = base({ y: -40 });
 export const fadeLeft: Variants = base({ x: 40 });
 export const fadeRight: Variants = base({ x: -40 });
-export const scaleIn: Variants = base({ scale: 0.96 }, 0.6);
-export const zoomIn: Variants = base({ scale: 0.85 }, 0.7);
+export const scaleIn: Variants = base({ scale: 0.96 }, 0.4);
+export const zoomIn: Variants = base({ scale: 0.85 }, 0.45);
 
 // Parent that staggers its children.
 export const staggerContainer = (
@@ -52,14 +52,14 @@ export const staggerItem: Variants = {
     opacity: 1,
     y: 0,
     scale: 1,
-    transition: { duration: 0.6, ease: EASE_OUT },
+    transition: { duration: 0.39, ease: EASE_OUT },
   },
 };
 
 // Route-change transition (used by app/template.tsx).
 export const pageTransition: Variants = {
   hidden: { opacity: 0, y: 12 },
-  show: { opacity: 1, y: 0, transition: { duration: 0.5, ease: EASE_IN_OUT } },
+  show: { opacity: 1, y: 0, transition: { duration: 0.33, ease: EASE_IN_OUT } },
   exit: { opacity: 0, y: -8, transition: { duration: 0.3, ease: EASE_IN_OUT } },
 };
 
@@ -75,7 +75,7 @@ export const floating: Variants = {
   },
 };
 
-export const viewportOnce = { once: true, margin: "-80px" } as const;
+export const viewportOnce = { once: true, margin: "-40px" } as const;
 
 // Named variant registry , lets <AnimatedSection variant="fadeUp" /> pick a preset by string.
 export const VARIANTS = {

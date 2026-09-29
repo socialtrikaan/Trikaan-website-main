@@ -145,9 +145,9 @@ export default function Navbar() {
     <>
       <motion.header
         className="fixed inset-x-0 top-0 z-50 px-3 pt-3 sm:px-5 sm:pt-4"
-        initial={{ y: -28, opacity: 0, filter: "blur(6px)" }}
-        animate={{ y: 0, opacity: 1, filter: "blur(0px)" }}
-        transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
+        initial={{ y: -28, opacity: 0 }}
+        animate={{ y: 0, opacity: 1 }}
+        transition={{ duration: 0.39, ease: [0.22, 1, 0.36, 1] }}
       >
         <nav
           aria-label="Primary"

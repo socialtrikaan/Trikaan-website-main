@@ -264,7 +264,7 @@ export default function GetInTouch() {
             initial={{ opacity: 0 }}
             whileInView={{ opacity: 1 }}
             viewport={viewportOnce}
-            transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1], delay: 0.2 }}
+            transition={{ duration: 0.45, ease: [0.22, 1, 0.36, 1], delay: 0.13 }}
           >
             <div className="flex flex-col gap-2">
               <p className={label}>Email</p>
@@ -344,7 +344,7 @@ export default function GetInTouch() {
                   type: "spring",
                   stiffness: 400,
                   damping: 18,
-                  delay: 0.1,
+                  delay: 0.07,
                 }}
               >
                 <CheckCircle2 size={36} strokeWidth={2.2} />

@@ -76,19 +76,19 @@ const numberV: Variants = {
 };
 const contentV: Variants = {
   hidden: {},
-  show: { transition: { staggerChildren: 0.1, delayChildren: 0.05 } },
+  show: { transition: { staggerChildren: 0.07, delayChildren: 0.05 } },
 };
 const titleV: Variants = {
-  hidden: { opacity: 0, x: 30, filter: "blur(6px)" },
-  show: { opacity: 1, x: 0, filter: "blur(0px)", transition: { duration: D, ease: "easeOut" } },
+  hidden: { opacity: 0, x: 30 },
+  show: { opacity: 1, x: 0, transition: { duration: D, ease: "easeOut" } },
 };
 const descV: Variants = {
-  hidden: { opacity: 0, y: 24, filter: "blur(6px)" },
-  show: { opacity: 1, y: 0, filter: "blur(0px)", transition: { duration: D, ease: "easeOut" } },
+  hidden: { opacity: 0, y: 24 },
+  show: { opacity: 1, y: 0, transition: { duration: D, ease: "easeOut" } },
 };
 const itemV: Variants = {
   hidden: { opacity: 0, y: 14 },
-  show: { opacity: 1, y: 0, transition: { duration: 0.45, ease: "easeOut" } },
+  show: { opacity: 1, y: 0, transition: { duration: 0.29, ease: "easeOut" } },
 };
 
 function PillarRow({ p, cardRight }: { p: Pillar; cardRight: boolean }) {

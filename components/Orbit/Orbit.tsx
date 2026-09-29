@@ -145,8 +145,8 @@ export default function Orbit() {
   const camScale = useSpring(
     useTransform(scrollYProgress, [0, 0.5, 1], [0.94, 1, 1.06]),
     {
-      stiffness: 80,
-      damping: 24,
+      stiffness: 300,
+      damping: 40,
     },
   );
 
@@ -182,7 +182,7 @@ export default function Orbit() {
       duration: SPIN_SEC,
       ease: "linear",
       repeat: Infinity,
-      delay: 0.3,
+      delay: 0.2,
     });
     return () => c.stop();
   }, [inView, rot]);

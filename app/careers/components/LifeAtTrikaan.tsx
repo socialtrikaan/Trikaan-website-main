@@ -37,7 +37,7 @@ export default function LifeAtTrikaan() {
             initial={{ opacity: 0, x: -32 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true, amount: 0.3 }}
-            transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
+            transition={{ duration: 0.39, ease: [0.22, 1, 0.36, 1] }}
           >
             {["careers-life-1", "careers-life-2", "careers-life-3", "careers-life-4"].map((img) => (
               <div key={img} className="relative aspect-[4/3] overflow-hidden rounded-card">
@@ -50,7 +50,7 @@ export default function LifeAtTrikaan() {
             initial={{ opacity: 0, x: 32 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true, amount: 0.3 }}
-            transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
+            transition={{ duration: 0.39, ease: [0.22, 1, 0.36, 1] }}
           >
             <div className="flex flex-col gap-4">
               <p className="font-heading text-[32px] leading-[42px] text-brand">

@@ -9,7 +9,7 @@ import { initials, type Member } from "./TeamCard";
 // modal-level spring (panel entrance)
 const SPRING = { type: "spring" as const, stiffness: 260, damping: 30 };
 const CURVE = [0.22, 1, 0.36, 1] as [number, number, number, number];
-const SLIDE = { duration: 0.9, ease: CURVE };
+const SLIDE = { duration: 0.59, ease: CURVE };
 
 // whole card cross-slide (matches reference): on "next" the current card exits right while
 // the next enters from the left , traveling simultaneously so the group backdrop shows
